@@ -34,29 +34,3 @@ Service name for portal
 {{ include "apollo.portal.fullName" .}}
 {{- end -}}
 {{- end -}}
-
-{{/*
-Service name for portaldb
-*/}}
-{{- define "apollo.portaldb.serviceName" -}}
-{{- if .Values.portaldb.service.enabled -}}
-{{- if .Values.portaldb.service.fullNameOverride -}}
-{{- .Values.portaldb.service.fullNameOverride | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
-{{- printf "%s-%s" .Release.Name .Values.portaldb.name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- else -}}
-{{- .Values.portaldb.host -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
-Service port for portaldb
-*/}}
-{{- define "apollo.portaldb.servicePort" -}}
-{{- if .Values.portaldb.service.enabled -}}
-{{- .Values.portaldb.service.port -}}
-{{- else -}}
-{{- .Values.portaldb.port -}}
-{{- end -}}
-{{- end -}}

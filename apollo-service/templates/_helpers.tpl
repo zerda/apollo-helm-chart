@@ -10,32 +10,6 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end -}}
 
 {{/*
-Service name for configdb
-*/}}
-{{- define "apollo.configdb.serviceName" -}}
-{{- if .Values.configdb.service.enabled -}}
-{{- if .Values.configdb.service.fullNameOverride -}}
-{{- .Values.configdb.service.fullNameOverride | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
-{{- printf "%s-%s" .Release.Name .Values.configdb.name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- else -}}
-{{- .Values.configdb.host -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
-Service port for configdb
-*/}}
-{{- define "apollo.configdb.servicePort" -}}
-{{- if .Values.configdb.service.enabled -}}
-{{- .Values.configdb.service.port -}}
-{{- else -}}
-{{- .Values.configdb.port -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
 Full name for config service
 */}}
 {{- define "apollo.configService.fullName" -}}

@@ -13,23 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-configdb:
-  name: apollo-configdb
-  # apolloconfigdb host
-  host: ""
-  port: 3306
-  dbName: ApolloConfigDB
-  # apolloconfigdb user name
-  userName: ""
-  # apolloconfigdb password
-  password: ""
-  connectionStringProperties: characterEncoding=utf8
-  service:
-    # whether to create a Service for this host or not
-    enabled: false
-    fullNameOverride: ""
-    port: 3306
-    type: ClusterIP
 
 configService:
   name: apollo-configservice

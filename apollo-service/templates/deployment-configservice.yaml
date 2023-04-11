@@ -79,6 +79,14 @@ spec:
             - name: {{ $key }}
               value: {{ $value }}
           {{- end }}
+          {{- if .Values.configService.envFromSecrets }}
+          envFrom:
+          {{- range .Values.configService.envFromSecrets }}
+          - secretRef:
+              name: {{ tpl .name $ }}
+              optional: {{ .optional | default false }}
+          {{- end }}
+          {{- end}}
           volumeMounts:
             - name: volume-configmap-{{ $configServiceFullName }}
               mountPath: /apollo-configservice/config/application-github.properties

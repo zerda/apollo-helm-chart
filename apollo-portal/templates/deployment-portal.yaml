@@ -94,6 +94,14 @@ spec:
             - name: {{ $key }}
               value: {{ $value }}
           {{- end }}
+          {{- if .Values.envFromSecrets }}
+          envFrom:
+          {{- range .Values.envFromSecrets }}
+          - secretRef:
+              name: {{ tpl .name $ }}
+              optional: {{ .optional | default false }}
+          {{- end }}
+          {{- end}}
           volumeMounts:
             - name: configmap-{{ $portalFullName }}
               mountPath: /apollo-portal/config/application-github.properties

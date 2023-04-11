@@ -71,6 +71,14 @@ configService:
     contextPath: ""
   # environment variables passed to the container, e.g. JAVA_OPTS
   env: {}
+
+  ## The names of secrets in the same kubernetes namespace which contain values to be added to the environment
+  ## Each entry should contain a name key, and can optionally specify whether the secret must be defined with an optional key.
+  ## Name is templated.
+  envFromSecrets: []
+  ## - name: secret-name
+  ##   optional: true
+
   strategy: {}
   resources: {}
   nodeSelector: {}
@@ -113,6 +121,14 @@ adminService:
     contextPath: ""
   # environment variables passed to the container, e.g. JAVA_OPTS
   env: {}
+
+  ## The names of secrets in the same kubernetes namespace which contain values to be added to the environment
+  ## Each entry should contain a name key, and can optionally specify whether the secret must be defined with an optional key.
+  ## Name is templated.
+  envFromSecrets: []
+  ## - name: secret-name
+  ##   optional: true
+
   strategy: {}
   resources: {}
   nodeSelector: {}
